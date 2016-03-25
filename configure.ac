@@ -1989,6 +1989,7 @@ AC_CONFIG_FILES([
   plugins/experimental/esi/Makefile
   plugins/experimental/generator/Makefile
   plugins/experimental/geoip_acl/Makefile
+  plugins/experimental/geoip_db/Makefile
   plugins/experimental/header_normalize/Makefile
   plugins/experimental/collapsed_forwarding/Makefile
   plugins/experimental/hipes/Makefile
