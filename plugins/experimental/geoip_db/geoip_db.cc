@@ -118,9 +118,9 @@ void TSPluginInit(int argc, const char *argv[]) {
   for (x = 0; x < MAX_GEOIP_DB; x++) GeoIP_DBs[x] = NULL;
 
   // Process plugin arguments
-  optind = 1;
+  optind = 0;
   for ( ; tag_index < MAX_GEOIP_DB ; ) {
-    switch (getopt_long(argc, (char * const *)argv, "t:f", longopts, NULL)) {
+    switch (getopt_long(argc, (char * const *)argv, "t:f:", longopts, NULL)) {
     case 't' :
       tag = optarg;
       TSDebug("geoip_db","Found  --tag is '%s'.",tag);
@@ -284,7 +284,7 @@ TSRemapStatus TSRemapDoRemap(void *ih, TSHttpTxn rh, TSRemapRequestInfo *rri) {
   TSMLoc chdr;
   TSMLoc cloc;
   TSHttpTxnClientReqGet(rh,&cbuf,&chdr);
-  if (TSMimeHdrFieldCreateNamed(cbuf, chdr, 
+  if (TSMimeHdrFieldCreateNamed(cbuf, chdr,
 				"@ATS_GEOIP_DB_COUNTRY",
 				sizeof("@ATS_GEOIP_DB_COUNTRY") - 1,
 				&cloc) == TS_SUCCESS) {
